@@ -5,17 +5,15 @@ for(let i=0;i<tai;i++){
     let valour=Number(prompt(`entre le elemnte : ${i+1}  :`));
     tab.push(valour);
 }
-let elemont=Number(prompt("entre les numeros que  rechirch tu veux remplacer "))
-let chang=Number(prompt("nembre pour quia veux changer "));
+let elemont=Number(prompt("entre un entie qui rochirch"))
 let cont=0;
 for(let i=0;i<tai;i++){
     if(tab[i]===elemont){
-        tab[i]=chang;
-        console.log("aloure le nombre qui rocherch il y a dans le tableau a lindice : "+i +"  ete romplacer");
-        cont++
+        console.log("aloure le nombre qui rocherch il y a dans le tableau a lindice : "+i );
+        cont++;
          break;
     }
 }
 if(cont===0){
     console.log("aloure le nombre qui rocherch il ya pas  dans le tableau  : ");
-}console.log(tab)
+}
