@@ -7,13 +7,13 @@ function compareChain(chan1,chan2){
     while(true){
         if(chan1[i]===undefined && chan2[i]===undefined){
          console.log("le doux chain et edontique");
-         return;
+         break;
         } if(chan1[i]===undefined||chan2[i]===undefined){
           console.log("le doux chain pas edontique")
-          return;
+          break;
         } if(chan1[i]!==chan2[i]){
          console.log("le doux chain pas edontique")
-         return ;
+         break;
         }
         i++;
     }
