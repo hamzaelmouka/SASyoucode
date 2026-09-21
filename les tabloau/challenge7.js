@@ -6,11 +6,11 @@ for(let i=0;i<tai;i++){
     tab.push(valour)
 }let x=0;
 for(let i=0;i<tai;i++){
-    for(let j=0;j<tai;j++){
+    for(let j=0;j<tai-1;j++){
         if(tab[j]>tab[j+1]){
             x=tab[j];
-            tab[i]=tab[j];
-            tab[j]=x;
+            tab[j]=tab[j+1];
+            tab[j+1]=x;
         }   
     }
 }
