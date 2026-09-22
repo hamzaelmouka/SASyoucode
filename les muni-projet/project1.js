@@ -1,6 +1,5 @@
 const prompt = require('prompt-sync')();
-const apprenants=[
-];
+const apprenants=[];
 menu();
 function menu(){
 console.log(`===============Menu=========
@@ -14,8 +13,6 @@ console.log(`===============Menu=========
 0. Quitter le programme
 `);
 let choix=Number(prompt("entre un choix 0 a 6 :"));
-
-
 switch(choix){
     case 1:
         ajouter();
@@ -37,12 +34,11 @@ switch(choix){
         break;
     case 7:
         meilleur();
-    case 0:  
-    break;
+    case 0:
+        break;
     default :
     console.log("\\\\ le choix pas valide entre outro choix////");
     menu();
-    break;
 }}
 function ajouter(){
     let cont=0;
@@ -54,24 +50,23 @@ function ajouter(){
             return menu();
         }
     }
-const note=prompt("entre la note de apprenants : ");
-if(isNaN(note)||20<note||note<0){
-    console.log(" le note qui entre pas valide  entre note entre 0 et 20");
-    return menu();
-}
-const apprenant={
-    prenom :prenom,
-    note   :note
-}
-let skils=Number(prompt("As-tu une competence que tu maitrises entre 1 pour oui "));
-if(skils===1){
-    let competene=prompt("entre le competence qui mestise");
-  apprenant.skilse=competene;
-}
-   apprenants.push(apprenant);
-console.log("        le prenants et Ajoute"); 
-
-menu();
+    const note=prompt("entre la note de apprenants : ");
+    if(isNaN(note)||20<note||note<0){
+        console.log(" le note qui entre pas valide  entre note entre 0 et 20");
+        return menu();
+    }
+    const apprenant={
+        prenom :prenom,
+        note   :note
+    }
+    let skils=Number(prompt("As-tu une competence que tu maitrises entre 1 pour oui "));
+    if(skils===1){
+        let competene=prompt("entre le competence qui mestise");
+        apprenant.skilse=competene;
+    }
+    apprenants.push(apprenant);
+    console.log("        le prenants et Ajoute"); 
+    menu();
 }
 function afficher(){
     let cont=0
@@ -82,7 +77,7 @@ function afficher(){
     if(cont===0){
         console.log("\\\\ne pas exeste un apparenant ajouter un apparenante ///");
     }
-menu();
+    menu();
 }
 function rechercher(){
     let cont=0;
