@@ -118,7 +118,10 @@ function Supprimer(){
     for(i=0;apprenants[i]!==undefined;i++){
         cont++;
         if(apprenants[i].prenom===prenom){
-            delete apprenants[i];
+            for (let j=i+1;apprenants[j]!==undefined;j++){
+                apprenants[j-1] = apprenants[j];
+            }
+            delete apprenants[apprenants.length-1]
             console.log("\\\\le prenante et soupprime////")
             return menu();
         }
