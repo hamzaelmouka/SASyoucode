@@ -266,13 +266,17 @@ function achtterTicket(){
         seatNumber : seatNumber,
         price : price
     }
-    tickets.push(ticket);
+    let n=0;
+    while(tickets[n]!==undefined){
+        n++;
+    }
+    tickets[n]=ticket;
     console.log("le ticket et valide ");
     menu();
 }
 function afficherTicket(){
-    
-    if(cont===0){
+
+    if(tickets[0]===undefined){
         console.log("\\\\ne pas exiset un ticket enregistres ///");
         return menu();
     }
@@ -292,10 +296,11 @@ function AnnulerTicket(){
         let id=prompt("entre Identifiant du ticket : ");
         for(let i=0;tickets[i]!==undefined;i++){
             if(tickets[i].id==id){
-                for (let j=i+1;tickets[j]!==undefined;j++){
+                let j;
+                for ( j=i+1;tickets[j]!==undefined;j++){
                     tickets[j-1] = tickets[j];
                 }
-                delete tickets[tickets.length-1]
+                tickets[j-1]=undefined;
                 cont1++;
                 console.log("Ticket annulé avec succès.");
                 return menu();
