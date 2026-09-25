@@ -18,7 +18,7 @@ function menu(){
         8. Statistiques de l'élection  
         0. Quitter 
         Votre choix :`)
-let choix=Number(prompt("    Votre choix :"));
+let choix=(prompt("    Votre choix :"));
 switch(choix){
     case 1:
         AjouterCandidat();
@@ -63,9 +63,10 @@ function AjouterCandidat(){
     }if(cont1==0){
     let nom=prompt("entre le nom de candidant   :");
     let prenom=prompt("entre le prenom de candidant   :");
-    let partiPolitique=prompt(` Vous organisez une fete ?
+    console.log(` Vous organisez une fete ?
         pour oui entre le nom de parter
-        si non entre le nombre 1 : :`);
+        si non entre le nombre 1 : `);
+    let partiPolitique=prompt=("");
     let age=prompt("entre le age  :");
     cont++;
     let candidat = { 
