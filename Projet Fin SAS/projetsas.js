@@ -49,7 +49,7 @@ switch(choix){
     console.log(`       le choix pas valide entre outro choix
         `);   
 }
-if(choix!=0){
+if(choix!==0){
     menu();
 }
 }
@@ -144,6 +144,10 @@ menu();
 
 }
 function VoterCandidat(){
+    if(cont<=0){
+        console.log(`   il nya aucun candidat ajoute les condidat;`);
+        return menu();  
+    }
     let cinElecteur=prompt("entre le cin  :");
     for(let i=0;i<cont;i++){
         for(let j=0;j<candidats[i].electeurs.length;j++){
@@ -165,6 +169,10 @@ function VoterCandidat(){
     menu();
 }
 function ModifierleCandidat(){
+    if(cont<=0){
+        console.log(`   il nya aucun candidat ajoute les condidat;`);
+        return menu();  
+    }
     let cin=prompt("entre le cin du candidat : ");
     for(let i=0;i<cont;i++){
         if(candidats[i].cin==cin){
@@ -177,6 +185,10 @@ function ModifierleCandidat(){
 
 }
 function SupprimerCandidat(){
+    if(cont<=0){
+        console.log(`   il nya aucun candidat ajoute les condidat;`);
+        return menu();  
+    }
     let cin=prompt("entre le cin du candidat : ");
     let verevie=0;
     let nouveauCandidats=[];
@@ -200,24 +212,33 @@ function SupprimerCandidat(){
     menu();
 }
 function RechercherCandidats(){
+    if(cont<=0){
+        console.log(`   il nya aucun candidat , ajoute les condidat;`);
+        return menu();  
+    }
+    let cont1=0;
     let nom=prompt("entre le nom du candidat : ");
     for(let i=0;i<cont;i++){
         if(candidats[i].nom==nom){
+            cont1++;
             console.log(`
                     cin    : ${candidats[i].cin}
                     nom    : ${candidats[i].nom}
                     prenom : ${candidats[i].prenom}
                     parti  : ${candidats[i].partiPolitique}
                     age    : ${candidats[i].age}
-                    votes  : ${candidats[i].electeurs.length}
+                    votes  : ${lengths(candidats[i].electeurs)}
                     `);
         }
+    }
+    if(cont1==0){
+        console.log("         le nom qui entre nexeste pas ");
     }
 
 }
 function Statistiqueselection(){
     if(cont<=0){
-        console.log(`   il nya aucun candidat ajoute les condidat;`);
+        console.log(`   il nya aucun candidat , ajoute les condidat;`);
         return menu();  
     }
     let totalCandidat=0;
@@ -225,10 +246,10 @@ function Statistiqueselection(){
     let Independant="Independant"
     let condidatPartiPolitique=0;
     for(i=0;i<cont;i++){
-        totalCandidat+=totalCandidat;
-        totalVote+=candidats[i].electeurs.length;
+        totalCandidat+=1;
+        totalVote+=lengths(candidats[i].electeurs);
         if(candidats[i].partiPolitique!=Independant){
-            condidatPartiPolitique+=condidatPartiPolitique;
+            condidatPartiPolitique+=1;
         }
     }
     console.log(`
@@ -257,7 +278,7 @@ function trierVote(){
     let reserv;
     for(let i=0;i<cont-1;i++){
         for(let j=0;j<cont-1-i;j++){
-            if(candidats[j].electeurs.length<candidats[j+1].electeurs.length){
+            if(lengths(candidats[j].electeurs)<lengths(candidats[j+1].electeurs)){
                 reserv=candidats[j];
                 candidats[j]=candidats[j+1];
                 candidats[j+1]=reserv;
@@ -265,3 +286,12 @@ function trierVote(){
         }
     }
 }
+function lengths(tablou){
+    let comtour=0;
+    for(let i=0;tablou[i]!=undefined;i++){
+        comtour++;
+    }
+    return comtour ;
+}
+
+
