@@ -17,7 +17,7 @@ function menu(){
         7. Rechercher des candidats 
         8. Statistiques de l'élection  
         0. Quitter 
-        Votre choix :`)
+        `)
 let choix=Number(prompt("    Votre choix :"));
 switch(choix){
     case 1:
@@ -158,7 +158,7 @@ function VoterCandidat(){
     for(let i=0;i<cont;i++){
         for(let j=0;j<candidats[i].electeurs.length;j++){
             if(candidats[i].electeurs[j]==cinElecteur){
-                console.log("vous deja vote");
+                console.log("vous deja vote deja vote et vous navz pas le droitde modifier voutre vote in de votre a nouveau");
                 return menu();
             }
         }
@@ -178,15 +178,51 @@ function ModifierleCandidat(){
     let cin=prompt("entre le cin du candidat : ");
     for(let i=0;i<cont;i++){
         if(candidats[i].cin==cin){
-            
+            candidats[i].partiPolitique=prompt("entre la nouvel parti");
+            candidats[i].age=prompt("entre nouvel age");
+            console.log("le parti politique et age de candidat modifier");
+            return menu();
         }
     }
 
 }
 function SupprimerCandidat(){
-
+    let cin=prompt("entre le cin du candidat : ");
+    let verevie=0;
+    let nouveauCandidats=[];
+    for(let i=0;i<cont;i++){
+        if(candidats[i].cin==cin){
+            verevie=1;
+        }else{
+            nouveauCandidats.push(candidats[i]);
+        }
+    }
+    if(verevie==1){
+        cont--;
+        candidats.length=0;
+        for(let i=0;i<cont;i++){
+            candidats.push(nouveauCandidats[i]);
+        }
+        console.log("le candidats et suprime ");
+    }else{
+        console.log(`   le candidat introvable `);
+    }
+    menu();
 }
 function RechercherCandidats(){
+    let nom=prompt("entre le nom du candidat : ");
+    for(let i=0;i<cont;i++){
+        if(candidats[i].nom==nom){
+            console.log(`
+                    cin    : ${candidats[i].cin}
+                    nom    : ${candidats[i].nom}
+                    prenom : ${candidats[i].prenom}
+                    parti  : ${candidats[i].partiPolitique}
+                    age    : ${candidats[i].age}
+                    votes  : ${candidats[i].electeurs.length}
+                    `);
+        }
+    }
 
 }
 function Statistiqueselection(){
